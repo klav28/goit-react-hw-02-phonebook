@@ -1,11 +1,9 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
-import initialContacts from './contacts.json';
 
 export class App extends Component {
   state = {
-    contacts: initialContacts,
-    filter: '',
+    contacts: [],
     name: '',
     number: '',
   };
@@ -13,12 +11,6 @@ export class App extends Component {
   handleChange = ev => {
     const { name, value } = ev.currentTarget;
     this.setState({ [name]: value });
-  };
-
-  handleFind = ev => {
-    const { value } = ev.currentTarget;
-    console.log(value);
-    this.setState({ filter: value });
   };
 
   handleSubmit = ev => {
@@ -29,6 +21,8 @@ export class App extends Component {
       name: this.state.name,
       number: this.state.number,
     };
+
+    console.dir(newContact);
 
     this.setState({ contacts: [...this.state.contacts, newContact] });
 
@@ -44,7 +38,7 @@ export class App extends Component {
       <div
         style={{
           height: '100vh',
-          fontSize: 30,
+          fontSize: 40,
           color: '#307090',
           marginLeft: '20px',
         }}
@@ -92,14 +86,6 @@ export class App extends Component {
             Add contact
           </button>
         </form>
-        <h2 style={{ color: '#444444' }}>Contacts</h2>
-        <div>
-          <label>
-            Find by name:
-            <br />
-            <input type="text" name="find" onChange={this.handleFind} />
-          </label>
-        </div>
         <div>
           <ul
             style={{
@@ -107,17 +93,11 @@ export class App extends Component {
               fontSize: 20,
             }}
           >
-            {this.state.contacts
-              .filter(contact => {
-                return contact.name
-                  .toLowerCase()
-                  .includes(this.state.filter.toLowerCase());
-              })
-              .map(el => (
-                <li key={el.id}>
-                  {el.name} ~ {el.number}
-                </li>
-              ))}
+            {this.state.contacts.map(el => (
+              <li key={el.id}>
+                {el.name} ~ {el.number}
+              </li>
+            ))}
           </ul>
         </div>
       </div>

@@ -1,10 +1,9 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
-import initialContacts from './contacts.json';
 
 export class App extends Component {
   state = {
-    contacts: initialContacts,
+    contacts: [],
     filter: '',
     name: '',
     number: '',

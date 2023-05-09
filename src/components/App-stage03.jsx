@@ -1,9 +1,10 @@
 import { Component } from 'react';
+import initialContacts from './contacts.json';
 import { nanoid } from 'nanoid';
 
 export class App extends Component {
   state = {
-    contacts: [],
+    contacts: initialContacts,
     filter: '',
     name: '',
     number: '',
@@ -16,7 +17,7 @@ export class App extends Component {
 
   handleFind = ev => {
     const { value } = ev.currentTarget;
-    console.log(value);
+    // console.log(value);
     this.setState({ filter: value });
   };
 

@@ -1,4 +1,4 @@
-import { Formik, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import * as yup from 'yup';
 import StyledForm from './ContactForm.component';
 
@@ -14,14 +14,14 @@ const schema = yup.object().shape({
       nameRegExp,
       'Name may contain only letters, apostrophe, dash and spaces.'
     )
-    .required(),
+    .required('Name is Required field'),
   number: yup
     .string()
     .matches(
       phoneRegExp,
-      'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
+      'Phone number must be digits and can contain spaces, dashes'
     )
-    .required(),
+    .required('Number is Required field'),
 });
 
 const initialValues = {
@@ -45,15 +45,15 @@ export const ContactForm = () => {
         <StyledForm.Form>
           <StyledForm.Label>
             Contact Name:
+            <StyledForm.Error name="name" component="span" />
             <StyledForm.Input type="text" name="name" />
-            <ErrorMessage name="name" />
           </StyledForm.Label>
           <StyledForm.Label>
             Phone Number:
+            <StyledForm.Error name="number" component="span" />
             <StyledForm.Input type="tel" name="number" />
-            <ErrorMessage name="number" />
           </StyledForm.Label>
-          <button type="submit">Add Contact</button>
+          <StyledForm.Button type="submit">Add Contact</StyledForm.Button>
         </StyledForm.Form>
       </Formik>
     </StyledForm>

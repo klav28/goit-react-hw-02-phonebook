@@ -10,6 +10,11 @@ export class App extends Component {
   };
 
   render() {
-    return <ContactForm />;
+    return (
+      <main>
+        <h1>Phonebook</h1>
+        <ContactForm />;
+      </main>
+    );
   }
 }

@@ -3,14 +3,15 @@ import { ErrorMessage, Field, Form } from 'formik';
 
 const StyledForm = styled.div`
   display: block;
-  width: 600px;
+  width: 800px;
   margin: 0 auto;
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.25);
 `;
 
 StyledForm.Form = styled(Form)`
   display: flex;
   flex-direction: column;
-  background-color: #f0f0f0;
+  background-color: #f7f7f7;
   outline: solid 1px gray;
   padding: 10px;
 `;
@@ -20,13 +21,14 @@ StyledForm.Input = styled(Field)`
   display: block;
   margin-top: 10px;
   margin-bottom: 10px;
-  width: 100%;
+  width: 99%;
 `;
 
 StyledForm.Label = styled.label`
   font-size: 20px;
   font-weight: 700;
   color: #444444;
+  width: 100%;
 `;
 
 StyledForm.Error = styled(ErrorMessage)`
@@ -40,7 +42,7 @@ StyledForm.Error = styled(ErrorMessage)`
 StyledForm.Button = styled.button`
   padding: 5px;
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 300;
   width: 50%;
   margin: 0 auto;
   margin-top: 10px;

@@ -1,6 +1,7 @@
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import StyledForm from './ContactForm.component';
+import PropTypes from 'prop-types';
 
 const phoneRegExp =
   /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/;
@@ -29,9 +30,9 @@ const initialValues = {
   number: '',
 };
 
-export const ContactForm = () => {
+export const ContactForm = ({ onContactAdd }) => {
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+    onContactAdd(values);
     resetForm();
   };
 
@@ -58,4 +59,8 @@ export const ContactForm = () => {
       </Formik>
     </StyledForm>
   );
+};
+
+ContactForm.propTypes = {
+  onContactAdd: PropTypes.func.isRequired,
 };

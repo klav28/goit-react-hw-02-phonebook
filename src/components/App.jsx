@@ -17,6 +17,17 @@ export class App extends Component {
   };
 
   handleAddContact = values => {
+    // Проверка на дубликат
+    if (
+      this.state.contacts.find(
+        el => el.name.toLowerCase() === values.name.toLowerCase()
+      )
+    ) {
+      alert(`${values.name} is already exists in contacts`);
+      return;
+    }
+
+    // Создаем новый контакт
     const newContact = {
       id: nanoid(4),
       name: values.name,
